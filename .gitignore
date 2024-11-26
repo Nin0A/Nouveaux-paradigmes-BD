@@ -13,7 +13,7 @@ Thumbs.db
 /cache/
 /tmp/
 /logs/
-/vendor/
+vendor/
 /node_modules/
 
 # Fichiers de configuration

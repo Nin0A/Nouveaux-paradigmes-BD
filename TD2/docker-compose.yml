@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  sql:
+    image: postgres:latest
+    container_name: td2-sql
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: tmap
+    networks:
+      - td1-net
+    volumes:
+      - sql-data:/var/lib/postgresql/data2
+
+  adminer:
+    image: adminer
+    container_name: td2-adminer
+    ports:
+      - "9003:8080"
+    networks:
+      - td1-net
+
+  php:
+    build: .
+    container_name: td2-php
+    volumes:
+      - ./src:/var/www/html 
+    networks:
+      - td1-net
+    ports:
+      - "9004:80" 
+    depends_on:
+      - sql
+
+networks:
+  td1-net:
+    driver: bridge
+
+volumes:
+  sql-data: {} 
