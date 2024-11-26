@@ -82,4 +82,34 @@ abstract class Model
 
         return $objects;  // Retourner le tableau d'objets
     }
+
+    public static function find(array $criteria, array $columns = ['*']): array
+    {
+        // Initialiser la requête avec la table
+        $query = Query::table(static::$table);
+
+        // Appliquer les critères de recherche
+        foreach ($criteria as $criterion) {
+            if (count($criterion) === 3) {
+                // $criterion est supposé être [colonne, opérateur, valeur]
+                [$column, $operator, $value] = $criterion;
+                $query->where($column, $operator, $value);
+            }
+        }
+
+        // Spécifier les colonnes à récupérer
+        $query->select($columns);
+
+        // Exécuter la requête et récupérer les résultats
+        $results = $query->get();
+
+        // Transformer chaque résultat en instance du modèle
+        $objects = [];
+        foreach ($results as $row) {
+            $objects[] = new static($row);
+        }
+
+        // Retourner un tableau d'objets
+        return $objects;
+    }
 }

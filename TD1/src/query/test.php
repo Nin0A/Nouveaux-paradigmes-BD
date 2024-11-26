@@ -34,4 +34,14 @@ $article->delete();
 
 $liste = Article::all();
 foreach ($liste as $article)
-    print_r("(" . $article->nom . " | " . $article->descr . " | " . $article->tarif . " | " . $article->id_categ . ")\n");
+    print_r("(" . $article->id . " | " . $article->nom . " | " . $article->descr . " | " . $article->tarif . " | " . $article->id_categ . ")\n");
+
+
+$articles = Article::find(
+    [['tarif', '<=', 100]],
+    ['id', 'nom', 'tarif']
+);
+
+foreach ($articles as $article) {
+    echo $article->nom . " - " . $article->tarif . "\n";
+}
