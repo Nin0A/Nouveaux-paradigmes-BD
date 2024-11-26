@@ -1,0 +1,58 @@
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+
+# Fichiers générés par l'environnement
+/.vscode/
+/.idea/
+/nbproject/
+/.env
+*.log
+
+# Cache et fichiers temporaires
+/cache/
+/tmp/
+/logs/
+/vendor/
+/node_modules/
+
+# Fichiers de configuration
+/.env
+.phpunit.result.cache
+/.phpunit.cache/
+/*.local.php
+/config.php
+.env.*
+
+# Fichiers générés par Composer
+composer.lock
+composer.phar
+
+# Fichiers générés par les outils de test
+coverage/
+phpunit.xml
+phpunit.xml.dist
+
+# Fichiers générés par les IDE
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.bak
+*.backup
+
+# Images et autres ressources temporaires
+*.png
+*.jpeg
+*.jpg
+*.gif
+
+# Autres fichiers temporaires
+*.bak
+*.swp
+*.tmp
+*.temp
+
+# Ignorer les fichiers uploadés ou générés dynamiquement
+/uploads/
+/storage/
