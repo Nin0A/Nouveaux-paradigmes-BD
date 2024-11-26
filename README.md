@@ -1,5 +1,7 @@
 # Nouveaux-paradigmes-BD
 
+## TD1 - Programmer un Micro-ORM
+
 ### 🚀 Pour récupérer le projet
 
 `git clone git@github.com:Nin0A/Nouveaux-paradigmes-BD.git`
