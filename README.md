@@ -1,10 +1,10 @@
 # Nouveaux-paradigmes-BD
 
-## 🚀 Pour récupérer le projet :
+### 🚀 Pour récupérer le projet :
 
 `git clone git@github.com:Nin0A/Nouveaux-paradigmes-BD.git`
 
-## ▶️ Pour lancer le projet : 
+### ▶️ Pour lancer le projet : 
 
 A la racine,
 
