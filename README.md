@@ -1,17 +1,15 @@
 # Nouveaux-paradigmes-BD
 
-### 🚀 Pour récupérer le projet :
+### 🚀 Pour récupérer le projet
 
 `git clone git@github.com:Nin0A/Nouveaux-paradigmes-BD.git`
 
-### ▶️ Pour lancer le projet : 
+### ▶️ Pour lancer le projet
 
-A la racine,
+A la racine : `docker compose up --build -d`
 
-`docker compose up --build -d`
+Pour lancer le programme test :
 
-Pour lancer le programme test
+1 - `docker exec -it <td1-php> bash`
 
-`docker exec -it <td1-php> bash`
-
-`php query/test.php`
+2 - `php query/test.php`
