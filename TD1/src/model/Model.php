@@ -83,7 +83,7 @@ abstract class Model
         return $objects;  // Retourner le tableau d'objets
     }
 
-    public static function find(array $criteria, array $columns = ['*']): array
+    public static function find(array $criteria, array $columns = ['*'], bool $single = false): mixed
     {
         // Initialiser la requête avec la table
         $query = Query::table(static::$table);
@@ -103,13 +103,65 @@ abstract class Model
         // Exécuter la requête et récupérer les résultats
         $results = $query->get();
 
-        // Transformer chaque résultat en instance du modèle
+        // Si aucun résultat n'est trouvé et que le mode "single" est activé, retourner null
+        if (empty($results)) {
+            return $single ? null : [];
+        }
+
+        // Si nous voulons un seul objet (par exemple, chercher un article par son ID)
+        if ($single) {
+            return new static($results[0]);
+        }
+
+        // Retourner un tableau d'objets pour plusieurs résultats
         $objects = [];
         foreach ($results as $row) {
             $objects[] = new static($row);
         }
 
-        // Retourner un tableau d'objets
         return $objects;
+    }
+
+    public function belongs_to(string $relatedModel, string $foreignKey): ?object
+    {
+        // Récupérer la valeur de la clé étrangère dans l'objet courant
+        $foreignKeyValue = $this->attributes[$foreignKey] ?? null;
+
+        // Afficher la valeur de la clé étrangère pour débogage
+        echo "Valeur de la clé étrangère: $foreignKeyValue\n"; // Ajouté pour le débogage
+
+        // Si la clé étrangère n'est pas définie, retourner null
+        if (!$foreignKeyValue) {
+            return null;
+        }
+
+        // Obtenir le modèle lié
+        $relatedClass = "iutnc\\hellokant\\entities\\$relatedModel"; // Assurez-vous que vous utilisez le bon namespace
+
+        // Utiliser la méthode getPrimaryKey() pour récupérer la clé primaire du modèle lié
+        $primaryKey = static::$primaryKey;
+
+        // Retourner l'objet du modèle lié en recherchant selon la clé primaire
+        $relatedObjects = $relatedClass::find([[$primaryKey, '=', $foreignKeyValue]]);
+        return !empty($relatedObjects) ? $relatedObjects[0] : null;
+    }
+
+
+    public function has_many(string $relatedModel, string $foreignKey): array
+    {
+        // Obtenir la clé primaire de l'objet courant
+        $primaryKeyValue = $this->attributes[static::$primaryKey] ?? null;
+
+        // Si la clé primaire n'est pas définie, retourner un tableau vide
+        if (!$primaryKeyValue) {
+            return [];
+        }
+
+        // Obtenir le modèle lié
+        $relatedClass = "iutnc\\hellokant\\entities\\$relatedModel";
+
+        // Rechercher tous les objets dans le modèle lié qui possèdent cette clé étrangère
+
+        return $relatedClass::find([[$foreignKey, '=', $primaryKeyValue]]);
     }
 }
