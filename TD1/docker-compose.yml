@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  sql:
+    image: mariadb:latest
+    container_name: td1-sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tmap
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    networks:
+      - td1-net
+    volumes:
+      - sql-data:/var/lib/mysql # Persister les données de la DB
+
+  adminer:
+    image: adminer
+    container_name: td1-adminer
+    ports:
+      - "9000:8080"
+    networks:
+      - td1-net
+
+  php:
+    build: .
+    container_name: td1-php
+    volumes:
+      - ./src:/var/www/html # Monter le dossier `src` pour accéder au code PHP
+    networks:
+      - td1-net
+    ports:
+      - "9001:80" # Map le port 80 du conteneur sur le port 80 de la machine hôte
+    depends_on:
+      - sql
+
+networks:
+  td1-net:
+    driver: bridge
+
+volumes:
+  sql-data: {} # Volume persistant pour la base de données
