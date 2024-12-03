@@ -8,13 +8,14 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\DBAL\Types\Types;
 
 #[Entity]
-#[Table(name: 'specialite')]
-class Specialite extends Entite {
+#[Table(name: 'type_groupement')]
+class TypeGroupement extends Entite {
 
-    #[Column(type: Types::STRING, length: 48)]
+
+    #[Column(name: "type_libelle", type: Types::STRING, length: 48)]
     private string $libelle;
 
-    #[Column(type: Types::TEXT)]
+    #[Column(name: "type_description", type: Types::TEXT)]
     private string $description;
 
 
