@@ -1,4 +1,5 @@
 <?php
+
 namespace iutnc\doctrine\core\domain\entities;
 
 use Doctrine\ORM\Mapping\Id;
@@ -7,10 +8,14 @@ use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\OneToMany;
+use Symfony\Component\Console\Input\ArrayInput;
 
 #[Entity]
 #[Table(name: 'specialite')]
-class Specialite {
+class Specialite
+{
 
     #[Id]
     #[Column(type: Types::INTEGER)]
@@ -23,16 +28,26 @@ class Specialite {
     #[Column(type: Types::TEXT)]
     private string $description;
 
-    public function getId(): int {
+    #[OneToMany(targetEntity: Praticien::class, mappedBy: "specialite")]
+    private Collection $praticiens;
+
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function getLibelle(): string {
+    public function getLibelle(): string
+    {
         return $this->libelle;
     }
 
-    public function getDescription(): string {
+    public function getDescription(): string
+    {
         return $this->description;
     }
 
+    public function getPraticiens(): Collection
+    {
+        return $this->praticiens;
+    }
 }
