@@ -28,12 +28,6 @@ class Praticien extends Entite {
     #[Column(type: Types::STRING, length: 24)]
     private string $telephone;
 
-    #[Column(type: Types::INTEGER)]
-    private int $specialite_id;
-
-    #[Column(type: Types::STRING)]
-    private string $groupe_id;
-
     #[ManyToOne(targetEntity: Specialite::class)]
     #[JoinColumn(name: 'specialite_id', referencedColumnName: 'id')]
     private ?Specialite $specialite = null;
@@ -63,21 +57,40 @@ class Praticien extends Entite {
         return $this->telephone;
     }
 
-    public function getSpecialiteId(): int {
-        return $this->specialite_id;
-    }
-
     public function getSpecialite(): ?Specialite {
         return $this->specialite;
-    }
-
-    public function getGroupeId(): string {
-        return $this->groupe_id;
     }
 
     public function getGroupement(): ?Groupement {
         return $this->groupement;
     }
 
+    public function setNom(string $nom): void {
+        $this->nom = $nom;
+    }
+
+    public function setPrenom(string $prenom): void {
+        $this->prenom = $prenom;
+    }
+
+    public function setVille(string $ville): void {
+        $this->ville = $ville;
+    }
+
+    public function setEmail(string $email): void {
+        $this->email = $email;
+    }
+
+    public function setTelephone(string $telephone): void {
+        $this->telephone = $telephone;
+    }
+
+    public function setSpecialite(Specialite $specialite): void {
+        $this->specialite = $specialite;
+    }
+
+    public function setGroupement(Groupement $groupement): void {
+        $this->groupement = $groupement;
+    }
 
 }
