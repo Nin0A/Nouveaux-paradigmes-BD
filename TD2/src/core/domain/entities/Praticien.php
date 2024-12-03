@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[Entity]
 #[Table(name: 'praticien')]
@@ -32,6 +34,14 @@ class Praticien extends Entite {
     #[Column(type: Types::STRING)]
     private string $groupe_id;
 
+    #[ManyToOne(targetEntity: Specialite::class)]
+    #[JoinColumn(name: 'specialite_id', referencedColumnName: 'id')]
+    private ?Specialite $specialite = null;
+
+    #[ManyToOne(targetEntity: Groupement::class)]
+    #[JoinColumn(name: 'groupe_id', referencedColumnName: 'id')]
+    private ?Groupement $groupement = null;
+
 
     public function getNom(): string {
         return $this->nom;
@@ -57,8 +67,16 @@ class Praticien extends Entite {
         return $this->specialite_id;
     }
 
+    public function getSpecialite(): ?Specialite {
+        return $this->specialite;
+    }
+
     public function getGroupeId(): string {
         return $this->groupe_id;
+    }
+
+    public function getGroupement(): ?Groupement {
+        return $this->groupement;
     }
 
 

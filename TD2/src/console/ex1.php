@@ -31,6 +31,10 @@ print $praticien->getVille() . "\n";
 print $praticien->getEmail() . "\n";
 print $praticien->getTelephone() . "\n";
 
+print "Question 4 : Compléter en affichant sa spécialité et son groupement de rattachement \n";
+print $praticien->getSpecialite()->getLibelle() . "\n";
+print $praticien->getGroupement()->getNom() . "\n";
+
 
 
 
