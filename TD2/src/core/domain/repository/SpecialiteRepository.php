@@ -13,6 +13,7 @@ class SpecialiteRepository extends EntityRepository implements SpecialiteReposit
                 WHERE s.libelle LIKE :keyword 
                 OR s.description LIKE :keyword';
         $query = $this->getEntityManager()->createQuery($dql);
+        $query->setParameter('keyword', '%' . $keyword . '%');
         return $query->getResult();
     }
 }

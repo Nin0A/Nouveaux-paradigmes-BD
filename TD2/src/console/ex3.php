@@ -9,11 +9,17 @@ $praticienRepository = $em->getRepository(Praticien::class);
 // $specialiteRepository = $em->getRepository(Specialite::class);
 
 
-#Exercice 1
+print "Question 1 : liste des praticiens d'une spécialité donnée, en incluant leur groupement d’appartenance\n";
 
 $praticien = $praticienRepository->getPraticienBySpecialite('Dentiste');
 print_r($praticien);
 
-// #Exercice 2
-// $specialites = $specialiteRepository->getSpecialtitesByKeyword('dentaire');
-// print_r($specialites);
+
+
+print "Question 2 : liste des spécialités contenant un mot clé dans le libellé ou la description\n";
+$mot = 'Médecine';
+$specialites = $specialiteRepository->getSpecialtitesByKeyword($mot);
+print "Les spécialités contenant le mot clé $mot sont : \n";
+foreach ($specialites as $specialite) {
+    print $specialite->getLibelle() . PHP_EOL;
+}
