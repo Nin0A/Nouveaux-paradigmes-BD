@@ -20,4 +20,19 @@ class PraticienRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function getPraticienBySpeAndCity($specialite, $city): array
+    {
+        $dql = "SELECT p.nom, p.telephone
+            FROM iutnc\doctrine\core\domain\\entities\Praticien p
+            LEFT JOIN p.specialite s
+            WHERE s.libelle = :specialiteNom
+            AND p.ville = :city";
+
+        $query = $this->getEntityManager()->createQuery($dql);
+        $query->setParameter('specialiteNom', $specialite);
+        $query->setParameter('city', $city);
+
+        return $query->getResult();
+    }
 }
