@@ -5,7 +5,6 @@ use Doctrine\ORM\Mapping\MappedSuperclass;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\GeneratedValue;
 
 #[MappedSuperclass]
 class Entity {
