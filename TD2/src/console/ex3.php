@@ -2,10 +2,18 @@
 
 $em = require __DIR__ . '/bootstrap.php';
 
-use iutnc\doctrine\core\domain\entities\Specialite;
+use iutnc\doctrine\core\domain\entities\Praticien;
+// use iutnc\doctrine\core\domain\entities\Specialite;
+
+$praticienRepository = $em->getRepository(Praticien::class);
+// $specialiteRepository = $em->getRepository(Specialite::class);
 
 
-$specialiteRepository = $em->getRepository(Specialite::class);
+#Exercice 1
 
-$specialites = $specialiteRepository->getSpecialtitesByKeyword('dentaire');
-print_r($specialites);
+$praticien = $praticienRepository->getPraticienBySpecialite('Dentiste');
+print_r($praticien);
+
+// #Exercice 2
+// $specialites = $specialiteRepository->getSpecialtitesByKeyword('dentaire');
+// print_r($specialites);

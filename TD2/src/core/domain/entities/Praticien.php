@@ -1,4 +1,5 @@
 <?php
+
 namespace iutnc\doctrine\core\domain\entities;
 
 use iutnc\doctrine\core\domain\entities\Entity as Entite;
@@ -8,10 +9,12 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
+use iutnc\doctrine\core\domain\repository\PraticienRepository;
 
-#[Entity]
+#[Entity(repositoryClass: PraticienRepository::class)]
 #[Table(name: 'praticien')]
-class Praticien extends Entite {
+class Praticien extends Entite
+{
 
     #[Column(type: Types::STRING, length: 48)]
     private string $nom;
@@ -37,60 +40,73 @@ class Praticien extends Entite {
     private ?Groupement $groupement = null;
 
 
-    public function getNom(): string {
+    public function getNom(): string
+    {
         return $this->nom;
     }
 
-    public function getPrenom(): string {
+    public function getPrenom(): string
+    {
         return $this->prenom;
     }
 
-    public function getVille(): string {
+    public function getVille(): string
+    {
         return $this->ville;
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
-    public function getTelephone(): string {
+    public function getTelephone(): string
+    {
         return $this->telephone;
     }
 
-    public function getSpecialite(): ?Specialite {
+    public function getSpecialite(): ?Specialite
+    {
         return $this->specialite;
     }
 
-    public function getGroupement(): ?Groupement {
+    public function getGroupement(): ?Groupement
+    {
         return $this->groupement;
     }
 
-    public function setNom(string $nom): void {
+    public function setNom(string $nom): void
+    {
         $this->nom = $nom;
     }
 
-    public function setPrenom(string $prenom): void {
+    public function setPrenom(string $prenom): void
+    {
         $this->prenom = $prenom;
     }
 
-    public function setVille(string $ville): void {
+    public function setVille(string $ville): void
+    {
         $this->ville = $ville;
     }
 
-    public function setEmail(string $email): void {
+    public function setEmail(string $email): void
+    {
         $this->email = $email;
     }
 
-    public function setTelephone(string $telephone): void {
+    public function setTelephone(string $telephone): void
+    {
         $this->telephone = $telephone;
     }
 
-    public function setSpecialite(Specialite $specialite): void {
+    public function setSpecialite(Specialite $specialite): void
+    {
         $this->specialite = $specialite;
     }
 
-    public function setGroupement(Groupement $groupement): void {
+    public function setGroupement(Groupement $groupement): void
+    {
         $this->groupement = $groupement;
     }
-
 }

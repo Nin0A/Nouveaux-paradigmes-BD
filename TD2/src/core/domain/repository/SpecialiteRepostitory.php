@@ -1,4 +1,5 @@
 <?php
+
 namespace iutnc\doctrine\core\domain\repository;
 
 use Doctrine\ORM\EntityRepository;
