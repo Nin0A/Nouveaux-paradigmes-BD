@@ -10,9 +10,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\OneToMany;
-use Symfony\Component\Console\Input\ArrayInput;
+use iutnc\doctrine\core\domain\repository\SpecialiteRepository;
 
-#[Entity]
+#[Entity(repositoryClass: SpecialiteRepository::class)]
 #[Table(name: 'specialite')]
 class Specialite
 {
