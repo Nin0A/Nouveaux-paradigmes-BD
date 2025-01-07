@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: canals5
@@ -12,4 +13,3 @@ require_once __DIR__ . "/../src/vendor/autoload.php";
 
 $c = new Client("mongodb://mongo");
 echo "connected to mongo <br>";
-

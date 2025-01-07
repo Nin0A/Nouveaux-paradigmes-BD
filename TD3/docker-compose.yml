@@ -7,8 +7,8 @@ networks:
 services:
   php:
     build:
-        context: build
-        dockerfile: 8.3-cli.Dockerfile
+      context: build
+      dockerfile: 8.3-cli.Dockerfile
     ports:
       - "12080:80"
       - "12443:443"
@@ -21,21 +21,20 @@ services:
 
   ################################################
   # mongodb & mongo-express
-  ###############################################
+  ################################################
   mongo:
     image: mongo:latest
     volumes:
-    - ./data:/var/data
+      - ./data:/var/data
     working_dir: /var/data
     networks:
-    - catamongo.net
+      - catamongo.net
     ports:
-    - 27017:27017
+      - 27017:27017
 
   mongo-express:
     image: mongo-express:latest
     networks:
-    - catamongo.net
+      - catamongo.net
     ports:
-    - "8081:8081"
-
+      - "8081:8081"
