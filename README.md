@@ -9,8 +9,9 @@
 
 A la racine : `docker compose up --build -d`
 
-Pour lancer le programme test :
+docker exec -it td3_mongo_1 bash
 
-1 - `docker exec -it <td1-php> bash`
+mongoimport --db chopizza --collection produits --jsonArray < pizzashop.produits.json
+mongoimport --db chopizza --collection recettes --jsonArray < pizzashop.recettes.json
 
-2 - `php query/test.php`
+
