@@ -1,0 +1,19 @@
+meta {
+  name: (Q5) GetGroupementWithPraticiens
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:8055/items/groupement?fields=nom,ville,type_id.type_libelle,praticiens.nom, praticiens.prenom
+  body: none
+  auth: bearer
+}
+
+query {
+  fields: nom,ville,type_id.type_libelle,praticiens.nom, praticiens.prenom
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwNzM1YzJhLTM0MDgtNDc4MC1iYzM1LWJmZDE3NmVlZmRjZSIsInJvbGUiOiIxYzk3ZjU1Ny1hMmIyLTRlYmYtOGE0MS1mZWIxNzVhN2FjNTQiLCJhcHBfYWNjZXNzIjp0cnVlLCJhZG1pbl9hY2Nlc3MiOnRydWUsImlhdCI6MTczNzQ2NzUwNCwiZXhwIjoxNzM3NDY4NDA0LCJpc3MiOiJkaXJlY3R1cyJ9.nx_w8l3WIvIEczOxdx5ygdzq9EIiu74dgKGaP7KVZJM
+}

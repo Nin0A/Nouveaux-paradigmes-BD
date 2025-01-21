@@ -1,0 +1,19 @@
+meta {
+  name: (Q2) GetSpecialite2
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8055/items/specialite?filter={"id":{"_eq":"2"}}
+  body: none
+  auth: bearer
+}
+
+query {
+  filter: {"id":{"_eq":"2"}}
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwNzM1YzJhLTM0MDgtNDc4MC1iYzM1LWJmZDE3NmVlZmRjZSIsInJvbGUiOiIxYzk3ZjU1Ny1hMmIyLTRlYmYtOGE0MS1mZWIxNzVhN2FjNTQiLCJhcHBfYWNjZXNzIjp0cnVlLCJhZG1pbl9hY2Nlc3MiOnRydWUsImlhdCI6MTczNzQ2NTU1MywiZXhwIjoxNzM3NDY2NDUzLCJpc3MiOiJkaXJlY3R1cyJ9.anzmH9Qmtv-3XNT3SE4tKgBv5R5mt6JHetRRY20IxSk
+}

@@ -1,0 +1,20 @@
+meta {
+  name: (Q4) GetPraticienWithSpecialiteLibelle
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8055/items/praticien?fields=specialite.libelle&filter={"specialite.id":{"_eq": "specialite_id"}}
+  body: none
+  auth: bearer
+}
+
+query {
+  fields: specialite.libelle
+  filter: {"specialite.id":{"_eq": "specialite_id"}}
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjOWU2YmUyLTM2MmYtNDk0Yy1iOGJiLWI2MTEyNjExMzQ5NSIsInJvbGUiOiJlMGJmZWVhMC05MmM1LTQ0OWItOTU4ZS01ZmY5MjVhNGM1ZTUiLCJhcHBfYWNjZXNzIjpmYWxzZSwiYWRtaW5fYWNjZXNzIjpmYWxzZSwiaWF0IjoxNzM2ODc0MDk1LCJleHAiOjE3MzY4NzQ5OTUsImlzcyI6ImRpcmVjdHVzIn0.KseEj19XuWpK0FG0Rh_tFEUhGLrQoeYnCd7X35D4TH8
+}
